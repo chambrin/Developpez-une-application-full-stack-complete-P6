@@ -1,0 +1,29 @@
+<mat-toolbar>
+    <img src="/assets/logo_p6.png" alt="logo" class="logo" routerLink="/"/>
+    <div *ngIf="isLogged$ | async " class="loggedUserButtons">
+        <div class="wideScreenButtons" *ngIf="!isHandset">
+          <a routerLink="/articles" routerLinkActive="active">Articles</a>
+          <a routerLink="/topics" routerLinkActive="active">Thèmes</a>
+          <button mat-icon-button class="ppButton" routerLink="/account" routerLinkActive="active">
+            <img src="/assets/user.png" alt="Profile" class="profile-image">
+          </button>
+        </div>
+        <button mat-icon-button (click)="openMenu()" *ngIf="isHandset">
+          <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+
+<aside [class.open]="isMenuOpen">
+  <nav>
+    <a routerLink="/posts" routerLinkActive="active">Articles</a>
+    <a routerLink="/themes" routerLinkActive="active">Thèmes</a>
+  </nav>
+  <div class="profile-link">
+    <button mat-icon-button class="ppButton" routerLink="/account" routerLinkActive="active">
+      <img src="/assets/user.png" alt="Profile" class="profile-image">
+    </button>
+  </div>
+</aside>
+
+<div class="overlay" [class.active]="isMenuOpen" (click)="closeMenu()"></div>

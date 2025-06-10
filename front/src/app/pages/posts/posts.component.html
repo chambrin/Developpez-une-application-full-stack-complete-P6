@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="actions">
+    <button mat-raised-button color="primary" routerLink="/create-post">Créer un post</button>
+    <button mat-button [matMenuTriggerFor]="sortMenu">
+      Trier par
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #sortMenu="matMenu">
+      <button mat-menu-item (click)="applySorting('createdAt')">Date</button>
+      <button mat-menu-item (click)="applySorting('title')">Titre</button>
+      <button mat-menu-item (click)="applySorting('author')">Auteur</button>
+    </mat-menu>
+  </div>
+  
+  <div class="posts-grid" *ngIf="postsStream$ | async as posts" [ngClass]="{'single-column': isMobileLayout}">
+    <app-post *ngFor="let post of posts; let i = index"
+              [articleData]="post"
+              class="post-item"
+              [ngClass]="{
+                'left-column': !isMobileLayout && i % 2 === 0,
+                'right-column': !isMobileLayout && i % 2 !== 0
+              }">
+    </app-post>
+  </div>
+</div>

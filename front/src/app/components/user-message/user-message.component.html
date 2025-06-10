@@ -1,0 +1,9 @@
+<div class="user-message-container" *ngIf="!isMobileDisplay">
+    <div class="username">{{ authorName }}</div>
+    <div class="content">{{ messageText }}</div>
+</div>
+
+<div class="user-message-container-handset" *ngIf="isMobileDisplay">
+  <div class="content-handset">{{ messageText }}</div>
+  <div class="username-handset">{{ authorName }}</div>
+</div>

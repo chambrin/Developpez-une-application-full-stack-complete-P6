@@ -1,0 +1,38 @@
+<div class="account-container">
+    <h2>Compte utilisateur</h2>
+  
+    <form [formGroup]="accountForm" (ngSubmit)="onSave()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Username" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="email@email.fr" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Mot-de-passe</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Mot-de-passe" />
+      </mat-form-field>
+  
+      <div class="buttons">
+        <button mat-raised-button color="primary" type="submit" [disabled]="accountForm.invalid">Sauvegarder</button>
+        <button mat-button color="warn" (click)="onLogout()">Se déconnecter</button>
+      </div>
+    </form>
+  
+    <hr />
+  
+    <h3>Abonnements</h3>
+    <div class="subscriptions-container" *ngIf="subscriptions$ | async as subscriptions">
+      <div class="subscription-card" *ngFor="let subscription of subscriptions">
+        <h4>{{ subscription.title }}</h4>
+        <p>{{ subscription.description }}</p>
+        <button mat-raised-button color="primary" (click)="onUnsubscribe(subscription.id)">
+          Se désabonner
+        </button>
+      </div>
+    </div>
+</div>

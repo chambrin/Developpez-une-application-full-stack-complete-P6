@@ -1,0 +1,31 @@
+<div class="login-page">
+    <div class="back-button-container">
+      <button mat-icon-button class="back-button" routerLink="/">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    <img src="/assets/logo_p6.png" alt="logo" />
+    <div class="login-container">
+      <h2>Se connecter</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail ou nom d'utilisateur</mat-label>
+          <input matInput formControlName="identifier" required>
+          <mat-error *ngIf="loginForm.get('identifier')?.hasError('required')">
+            Ce champ est requis
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput type="password" formControlName="password" required>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Ce champ est requis
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">
+          Se connecter
+        </button>
+        <span *ngIf="errorMessage" class="error">{{ errorMessage }}</span>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,94 @@
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px;
+  padding: 20px;
+}
+
+.subscribedThemes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.single-column {
+  grid-template-columns: 1fr;
+}
+
+::ng-deep app-subject {
+  .subject-card, .topic-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    font-size: large;
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+  }
+
+  mat-card-title {
+    font-size: x-large;
+    margin-bottom: 10px;
+  }
+  
+  mat-card-subtitle {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    color: rgb(29, 29, 29);
+    font-size: large;
+    
+    span {
+      width: 50%;
+    }
+  }
+  
+  mat-card-content {
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .topic-content, .subject-content {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+::ng-deep app-subscribedTopic {
+  .subscribed-topic-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    font-size: large;
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-left: 4px solid #3f51b5;
+  }
+}
+
+@media (max-width: 768px) {
+  .themes-grid,
+  .subscribedThemes-grid {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 15px;
+  }
+}

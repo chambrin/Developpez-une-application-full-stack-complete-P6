@@ -1,0 +1,10 @@
+<mat-card class="post-card" (click)="onCardClick()">
+  <mat-card-title>{{ articleData.title }}</mat-card-title>
+  <mat-card-subtitle>
+    <span>{{ articleData.createdAt | date }}</span>
+    <span>{{ articleData.author }}</span>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <p class="post-content">{{ articleData.content }}</p>
+  </mat-card-content>
+</mat-card>

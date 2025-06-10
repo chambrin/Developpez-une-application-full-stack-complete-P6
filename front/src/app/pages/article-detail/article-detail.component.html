@@ -1,0 +1,35 @@
+<div class="article-detail-container" *ngIf="currentPost$ | async as article">
+  <div class="head-line">
+    <a routerLink="/posts" class="back-link">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    <h1 class="centered-title">{{ article.title }}</h1>
+  </div>
+    
+    <div class="article-meta">
+      <span>Créé le : {{ article.createdAt | date }}</span>
+      <span *ngIf="article.createdAt !== article.updatedAt">Modifié le : {{ article.updatedAt | date }}</span>
+      <span>Auteur : {{ article.author }}</span>
+      <span>{{ article.topic }}</span>
+    </div>
+    
+    <p class="article-content">{{ article.content }}</p>
+    
+    <hr>
+    
+    <div class="comments-section" *ngIf="userMessages$ | async as comments">
+      <h2>Commentaires</h2>
+      <div *ngFor="let comment of comments" class="comment">
+        <app-user-message [authorName]="comment.username" [messageText]="comment.content"></app-user-message>
+      </div>
+      
+      <div class="comment-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <textarea matInput placeholder="Écrivez ici votre commentaire" [(ngModel)]="userInput"></textarea>
+        </mat-form-field>
+        <button mat-icon-button color="primary" (click)="publishMessage()">
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </div>
+</div>

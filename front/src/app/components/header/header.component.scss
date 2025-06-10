@@ -1,0 +1,126 @@
+mat-toolbar {
+    width: 100%;
+    height: 15vh;
+    z-index: 1000;
+    border-bottom: 2px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        width: auto;
+        height: 80%;
+        object-fit: contain;
+    }
+
+    .loggedUserButtons {
+        margin-right: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        .wideScreenButtons {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            
+            a {
+                text-decoration: none;
+                font-size: 1.5em;
+                cursor: pointer;
+                margin: 0 20px;
+                &.active {
+                    color: #6C5CCF;
+                }
+                &.visited {
+                    color: #333;
+                }
+            }
+        }
+    }
+}
+
+aside {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    &.open {
+        transform: translateX(0);
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        margin-top: 80px;
+
+        a {
+            margin: 15px 0;
+            text-decoration: none;
+            color: #333;
+            font-size: 2em;
+
+            &.active {
+                color: #6C5CCF;
+            }
+        }
+    }
+
+    .profile-link {
+        padding: 20px;
+        align-self: flex-end;
+        .ppButton{
+            width: 100px;
+            height: 100px;
+        }
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 1000;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.ppButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: contain;
+    }
+    &.active {
+        .profile-image {
+            border: 5px solid #6C5CCF;
+        }
+    }
+}

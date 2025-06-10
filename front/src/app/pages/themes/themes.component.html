@@ -1,0 +1,17 @@
+<div class="themes-container">
+    <div class="themes-grid" *ngIf="availableThemes$ | async as themes" [ngClass]="{'single-column': isHandset}">
+      <app-subject *ngFor="let theme of themes"
+                 [id]="theme.id"
+                 [title]="theme.title"
+                 [description]="theme.description"
+                 (subscribe)="onSubscribe($event)">
+      </app-subject>
+    </div>
+    <div class="subscribedThemes-grid themes-grid" *ngIf="subscriptions$ | async as subscriptions" [ngClass]="{'single-column': isHandset}">
+      <app-subscribedTopic *ngFor="let subscription of subscriptions"
+                 [id]="subscription.id"
+                 [title]="subscription.title"
+                 [description]="subscription.description">
+      </app-subscribedTopic>
+    </div>
+</div>

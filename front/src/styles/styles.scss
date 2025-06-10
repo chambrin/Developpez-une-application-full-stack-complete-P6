@@ -1,0 +1,144 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* --------------------
+   Base Styles - Mobile First
+   -------------------- */
+   body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  
+  .header, .footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .main-content {
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+  
+  p {
+    font-size: 1em;
+    line-height: 1.6;
+  }
+  
+  /* --------------------
+     Small devices (portrait smartphones, less than 600px)
+     -------------------- */
+  @media (max-width: 599px) {
+    body {
+      font-size: 14px;
+    }
+  
+    .header, .footer {
+      font-size: 0.9em;
+      padding: 15px;
+    }
+  
+    .main-content {
+      padding: 10px;
+    }
+  }
+  
+  /* --------------------
+     Medium devices (landscape smartphones, tablets, 600px to 899px)
+     -------------------- */
+  @media (min-width: 600px) and (max-width: 899px) {
+    body {
+      font-size: 15px;
+    }
+  
+    .header, .footer {
+      font-size: 1em;
+      padding: 20px;
+    }
+  
+    .main-content {
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 1.8em;
+    }
+  
+    p {
+      font-size: 1.1em;
+    }
+  }
+  
+  /* --------------------
+     Large devices (tablets, small laptops, 900px to 1199px)
+     -------------------- */
+  @media (min-width: 900px) and (max-width: 1199px) {
+    body {
+      font-size: 16px;
+    }
+  
+    .header, .footer {
+      font-size: 1.1em;
+      padding: 25px;
+    }
+  
+    .main-content {
+      padding: 20px;
+      margin: 0 auto;
+      width: 80%;
+    }
+  
+    h1 {
+      font-size: 2em;
+    }
+  
+    p {
+      font-size: 1.2em;
+    }
+  }
+  
+  /* --------------------
+     Extra large devices (laptops, desktops, 1200px and above)
+     -------------------- */
+  @media (min-width: 1200px) {
+    body {
+      font-size: 18px;
+    }
+  
+    .header, .footer {
+      font-size: 1.2em;
+      padding: 30px;
+    }
+  
+    .main-content {
+      padding: 30px;
+      margin: 0 auto;
+      width: 70%;
+    }
+  
+    h1 {
+      font-size: 2.2em;
+    }
+  
+    p {
+      font-size: 1.3em;
+    }
+  }
