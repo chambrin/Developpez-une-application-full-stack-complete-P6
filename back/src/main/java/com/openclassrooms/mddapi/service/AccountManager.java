@@ -13,10 +13,16 @@ import com.openclassrooms.mddapi.util.PasswordValidator;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
+/**
+ * Service de gestion des comptes utilisateurs.
+ * Responsable de la création, modification et validation des comptes.
+ * Respecte le principe de responsabilité unique (SRP) en se concentrant sur la gestion des utilisateurs.
+ */
 @Data
 @Service
 public class AccountManager {
 
+    // Injection de dépendances (Dependency Inversion Principle)
     @Autowired
     private AccountDataAccess userRepository;
 
@@ -26,25 +32,54 @@ public class AccountManager {
     @Autowired
     private JWTService tokenGenerator;
 
+    // Pattern de validation d'email compilé une seule fois pour optimiser les performances
     private static final Pattern EMAIL_VALIDATION_PATTERN = Pattern.compile(
             "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$");
 
+    /**
+     * Recherche un compte par adresse email.
+     * @param emailAddress Adresse email à rechercher
+     * @return Optional contenant l'utilisateur si trouvé
+     */
     public Optional<User> findAccountByEmail(final String emailAddress) {
         return userRepository.findAccountByEmail(emailAddress);
     }
 
+    /**
+     * Récupère un utilisateur par son adresse email.
+     * Méthode alias pour findAccountByEmail (Interface Segregation Principle).
+     * @param emailAddress Adresse email de l'utilisateur
+     * @return Optional contenant l'utilisateur si trouvé
+     */
     public Optional<User> getUserByEmail(final String emailAddress) {
         return userRepository.findAccountByEmail(emailAddress);
     }
 
+    /**
+     * Récupère un utilisateur par son nom d'utilisateur.
+     * @param username Nom d'utilisateur à rechercher
+     * @return Optional contenant l'utilisateur si trouvé
+     */
     public Optional<User> getUserByUsername(final String username) {
         return userRepository.findAccountByUsername(username);
     }
 
+    /**
+     * Récupère un utilisateur par son identifiant.
+     * @param accountId Identifiant unique de l'utilisateur
+     * @return Optional contenant l'utilisateur si trouvé
+     */
     public Optional<User> getUserById(final Long accountId) {
         return userRepository.findById(accountId);
     }
 
+    /**
+     * Crée un nouvel utilisateur.
+     * Méthode wrapper pour registerNewAccount (Interface Segregation Principle).
+     * @param newAccount Données du nouvel utilisateur
+     * @return Utilisateur créé
+     * @throws IllegalArgumentException si les données sont invalides
+     */
     public User createUser(User newAccount) throws IllegalArgumentException {
         return registerNewAccount(newAccount);
     }

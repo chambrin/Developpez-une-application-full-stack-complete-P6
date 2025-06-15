@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import com.openclassrooms.mddapi.service.IFeedbackManager;
 import com.openclassrooms.mddapi.dto.CommentDTO;
@@ -21,12 +23,16 @@ public class FeedbackController {
         this.feedbackService = feedbackService;
     }
 
+    @Operation(summary = "Récupérer tous les commentaires d'un article")
+    @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{articleId}")
     public ResponseEntity<List<CommentDTO>> retrieveArticleFeedbacks(@PathVariable Long articleId) {
         List<CommentDTO> articleFeedbacks = feedbackService.getCommentsByArticleId(articleId);
         return ResponseEntity.ok(articleFeedbacks);
     }
 
+    @Operation(summary = "Créer un nouveau commentaire")
+    @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping
     public ResponseEntity<CommentDTO> submitNewFeedback(@RequestBody CreateCommentDTO feedbackData) {
         User authenticatedUser = extractAuthenticatedUser();
