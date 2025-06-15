@@ -37,6 +37,7 @@ public class SubjectController {
      * @return Liste de tous les sujets sous forme de TopicDTO
      */
     @Operation(summary = "Récupérer tous les sujets disponibles")
+    @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/all")
     public ResponseEntity<List<TopicDTO>> retrieveAllSubjects() {
         List<TopicDTO> allSubjects = subjectService.getAllTopics();
